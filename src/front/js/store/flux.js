@@ -4,6 +4,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 			token: null,
 			message: null,
 			// 
+			creareceta: null,
+			crearecetaIdToDelete: null,
+			error: null,
+
 			favorites: [],
 			demo: [
 				{
@@ -50,6 +54,139 @@ const getState = ({ getStore, getActions, setStore }) => {
 				//reset the global store
 				setStore({ demo: demo });
 			},
+
+
+			loadCrearecetas: async () => {
+				let data = null;
+				const store = getStore();
+				setStore({...store, error:null});
+				try{
+					const res = await fetch('');
+
+					if(!res.ok){
+						if(res.status == 404){
+							const actions = getActions();
+							await actions.createReceta();
+							setStore({...store, creareceta:[]});
+							return;
+						}
+						console.log("Error receta no obtenida");
+						throw "Error obteniendo receta";
+					}
+
+					data = await res.json();
+					if(!data.creareceta){
+						throw "Error en respuesta, receta no existe";
+					}
+
+					const creareceta = data.creareceta;
+					setStore({ ...store, creareceta:creareceta });
+
+				}catch(exception){
+					console.log("Excepcion obteniendo receta", exception,data);
+					setStore({...store, creareceta:[]});
+				}
+			},
+
+			createLista: async () => {
+				try{
+					const res = await fetch('', {
+						method:'POST'
+					});
+
+					if(!res.ok){
+						throw "Error creando receta";
+					}
+				}catch(exception){
+					throw exception;
+				}
+			},
+
+			creaRecetas: async (creareceta) =>{
+				let store = getStore();
+				setStore({...store, error:null});
+				try{
+					const res = await fetch('', {
+						method:'POST',
+						body: JSON.stringify(creareceta),
+						headers: {'content-type': 'application/json'}
+					});
+
+					if(!res.ok){
+						throw "Error creando receta";
+					}
+
+					const addedReceta = await res.json();
+
+					store = getStore()
+					setStore({...store, creareceta:[...store.creareceta, addedReceta]});
+					
+				}catch(exception){
+					console.log("Excepcion obteniendo receta", exception);
+					setStore({...store, error: exception});
+				}
+				
+			},
+
+			getCrearecetas:  (crearecetaId) =>{
+				const store = getStore();
+				const found =  store.creareceta.find(creareceta=> creareceta.id == crearecetaId );
+				return found;
+			},
+
+			updateCrearecetas: async (creareceta) => {
+				let store = getStore();
+				setStore({...store, error:null});
+				try{
+					const res = await fetch(``, {
+						method:'PUT',
+						body: JSON.stringify(creareceta),
+						headers: {'content-type': 'application/json'}
+					});
+
+					if(!res.ok){
+						throw "Error actualizando receta.";
+					}
+
+					const updatedCreareceta = await res.json();
+				
+					store = getStore();
+					
+					setStore({...store, creareceta:[...store.creareceta.filter(x=> x.id != creareceta.id), updatedCreareceta]});
+				}catch(exception){
+					console.log("Excepcion actualizando receta", exception);
+					setStore({...store, error: exception});
+				}
+			
+			},
+
+			deleteCrearecetas: async (crearecetaId)=>{
+				let store = getStore();
+				setStore({...store, crearecetasIdToDelete:null, error:null});
+
+				try{
+					const res = await fetch(``, {
+						method:'DELETE',
+						headers: {'content-type': 'application/json'}
+					});
+
+					if(!res.ok){
+						throw "Error actualizando receta.";
+					}
+
+					store = getStore()
+					setStore({...store, creareceta: store.creareceta.filter(x=> x.id != crearecetaId)});
+				}catch(exception){
+					console.log("Excepcion actualizando receta", exception);
+					setStore({...store, error: exception});
+				}
+			},
+
+			setIdToDelete: (crearecetaId)=>{
+				const store = getStore();
+				setStore({...store, crearecetaIdToDelete: crearecetaId})
+			},
+
 
 			getFavorite: (favorite) => {
                 let storeFavorites = getStore().favorites;

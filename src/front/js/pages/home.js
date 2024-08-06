@@ -73,7 +73,7 @@ export const Home = () => {
             <div className="card-body text-success ">
               <p></p>
               <p className="card-text"><strong>Aqui podras crear y aportar tus propias recetas culinarias, ya sean desayunos, comidas o cenas, con los ingrdientes que mas te gusten.</strong>.</p>
-              <Link to="/creareceta">
+              <Link to="/addnewrecet">
                 <button className="btn btn-outline-success my-2 my-sm-0" type="submit"><i className="fa-solid fa-pen-to-square"></i></button>
               </Link>
             </div>

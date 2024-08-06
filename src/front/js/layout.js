@@ -9,6 +9,7 @@ import { Private } from "./pages/Private";
 
 
 import { Home } from "./pages/home";
+import { Addnewrecet } from "./pages/addnewrecet";
 import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
 import { PlanSemanal } from "./pages/PlanSemanal";
@@ -55,6 +56,7 @@ const Layout = () => {
                         <Route element={<Login />} path="/login" />
                         <Route element={<Private />} path="/private" />
                         <Route element={<Demo />} path="/demo" />
+                        <Route element={<Addnewrecet />} path="/addnewrecet" />
 
                         <Route element={<Snacks />} path="/snacks" />
 
