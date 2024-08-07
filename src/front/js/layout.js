@@ -29,10 +29,13 @@ import { Snacks } from "./pages/Snacks";
 import { Comidas } from "./pages/Comidas";
 import { Cenas } from "./pages/Cenas";
 import { Postre } from "./pages/Postres";
+import { Addreceta } from "./pages/addreceta";
+import { Editreceta } from "./pages/edditreceta";
 
 
 import injectContext from "./store/appContext";
 import { Navbar } from "./component/navbar";
+import { Form } from "./component/form";
 import { Footer } from "./component/footer";
 
 
@@ -57,6 +60,11 @@ const Layout = () => {
                         <Route element={<Private />} path="/private" />
                         <Route element={<Demo />} path="/demo" />
                         <Route element={<Addnewrecet />} path="/addnewrecet" />
+                        <Route element={<Addreceta />} path="/addreceta" />
+                        <Route element={<Editreceta />} path="/editreceta" />
+                        
+                        
+                        <Route element={<Form />} path="/form" />
 
                         <Route element={<Snacks />} path="/snacks" />
 
