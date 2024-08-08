@@ -67,7 +67,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						if(res.status == 404){
 							const actions = getActions();
 							await actions.createReceta();
-							setStore({...store, creareceta:[]});
+							setStore({...store, crearecetas:[]});
 							return;
 						}
 						console.log("Error receta no obtenida");
@@ -75,16 +75,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 					}
 
 					data = await res.json();
-					if(!data.creareceta){
+					if(!data.crearecetas){
 						throw "Error en respuesta, receta no existe";
 					}
 
-					const creareceta = data.creareceta;
-					setStore({ ...store, creareceta:creareceta });
+					const crearecetas = data.crearecetas;
+					setStore({ ...store, crearecetas:crearecetas });
 
 				}catch(exception){
 					console.log("Excepcion obteniendo receta", exception,data);
-					setStore({...store, creareceta:[]});
+					setStore({...store, crearecetas:[]});
 				}
 			},
 
@@ -119,7 +119,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					const addedReceta = await res.json();
 
 					store = getStore()
-					setStore({...store, creareceta:[...store.creareceta, addedReceta]});
+					setStore({...store, crearecetas:[...store.crearecetas, addedReceta]});
 					
 				}catch(exception){
 					console.log("Excepcion obteniendo receta", exception);
@@ -130,7 +130,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			getCrearecetas:  (crearecetaId) =>{
 				const store = getStore();
-				const found =  store.creareceta.find(creareceta=> creareceta.id == crearecetaId );
+				const found =  store.crearecetas.find(creareceta=> creareceta.id == crearecetaId );
 				return found;
 			},
 
@@ -152,7 +152,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				
 					store = getStore();
 					
-					setStore({...store, creareceta:[...store.creareceta.filter(x=> x.id != creareceta.id), updatedCreareceta]});
+					setStore({...store, crearecetas:[...store.crearecetas.filter(x=> x.id != creareceta.id), updatedCreareceta]});
 				}catch(exception){
 					console.log("Excepcion actualizando receta", exception);
 					setStore({...store, error: exception});
@@ -175,7 +175,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					}
 
 					store = getStore()
-					setStore({...store, creareceta: store.creareceta.filter(x=> x.id != crearecetaId)});
+					setStore({...store, crearecetas: store.crearecetas.filter(x=> x.id != crearecetaId)});
 				}catch(exception){
 					console.log("Excepcion actualizando receta", exception);
 					setStore({...store, error: exception});

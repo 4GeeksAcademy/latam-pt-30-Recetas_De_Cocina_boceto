@@ -22,10 +22,10 @@ export const Addnewrecet = () => {
 		<div className="row">
 			<div className="col">
 				<div className="my-3 text-center ">
-					<Link  className="btn btn-success" to="/creareceta"> Crea tu propia receta</Link>
+					<Link  className="btn btn-success" to="/addreceta"> Crea tu propia receta</Link>
 				</div>
 				<div>
-					{ store.creareceta && store.creareceta.length > 0 && store.creareceta.map(creareceta => (<div key={creareceta.id} className="card">
+					{ store.crearecetas && store.crearecetas.length > 0 && store.crearecetas.map(creareceta => (<div key={creareceta.id} className="card">
 						<div className="row g-0">
 							<div className="col-md-2 ms-5 text-center">
 								<img src={cubiertosplato} className="my-2 contact__img" alt="Profile picture"/>
@@ -39,12 +39,12 @@ export const Addnewrecet = () => {
 							</div>
 							</div>
 							<div className="col-md-4 my-2 text-end">
-								<Link className="text-dark me-5" to={'/contact-edit/'+creareceta.id} ><i className="fa fa-edit"></i></Link>
+								<Link className="text-dark me-5" to={'/editreceta/'+creareceta.id} ><i className="fa fa-edit"></i></Link>
 								<a className="text-dark" onClick={()=>{actions.setIdToDelete(creareceta.id)}} href="#deleteModal" data-bs-toggle="modal"><i className="fa fa-trash"></i></a>
 							</div>
 						</div>
 					</div>))}
-					{store.creareceta && store.creareceta.length == 0 && <>
+					{store.crearecetas && store.crearecetas.length == 0 && <>
 						<div className="alert alert-warning" role="alert">
 							No tienes recetas, agrega una!
 						</div>
