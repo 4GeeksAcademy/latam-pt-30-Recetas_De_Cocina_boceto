@@ -20,13 +20,13 @@ export const Home = () => {
 
 
   useEffect(() => {
-    fetch('https://legendary-space-enigma-675vrxw7556f4r4r-3001.app.github.dev/api/categorias')
+    fetch('https://shiny-space-lamp-976qrgg67r662774g-3001.app.github.dev/api/categorias')
       .then(response => response.json())
       .then(data => {
-        setCategorias(data);        
+        console.log('Data:', data);  // Verifica la estructura de los datos
+        setCategorias(data);
       })
-  }, [])
-
+  }, []);
 
   return (
     <div className=" container-fluid  text-center mt-5">

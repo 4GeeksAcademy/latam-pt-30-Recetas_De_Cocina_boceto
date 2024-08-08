@@ -4,7 +4,7 @@ This module takes care of starting the API Server, Loading the DB and Adding the
 from unicodedata import category
 from flask import Flask, request, jsonify, url_for, Blueprint, render_template # type: ignore
 from api.utils import generate_sitemap, APIException
-from flask_cors import CORS # type: ignore
+from flask_cors import CORS
 from api.models import Paso, db, User, Plato, Categoria,Ingrediente,InformacionNutritiva
 from flask_jwt_extended import JWTManager
 from flask_jwt_extended import create_access_token
