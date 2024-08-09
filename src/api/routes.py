@@ -59,18 +59,11 @@ def login():
     return jsonify({"token": token}), 201
 
 
-def get_db_connection():
-    connection = mysql.connector.connect(
-        host="localhost",
-        user="tu_usuario",
-        password="tu_contraseña",
-        database="tu_base_de_datos"
-    )
-    return connection
+
 @api.route('/search', methods=['GET'])
+
 def search():
     query = request.args.get('query')
-    connection = get_db_connection()
     cursor = connection.cursor()
     cursor.execute("SELECT * FROM tu_tabla WHERE columna LIKE %s", ('%' + query + '%',))
     results = cursor.fetchall()
