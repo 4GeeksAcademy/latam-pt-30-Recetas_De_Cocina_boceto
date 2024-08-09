@@ -22,7 +22,7 @@ export const Addnewrecet = () => {
 		<div className="row">
 			<div className="col">
 				<div className="my-3 text-center ">
-					<Link  className="btn btn-success" to="/addreceta"> Crea tu propia receta</Link>
+					<Link  className="btn btn-success" to="/generadorrecetas"> Crea tu propia receta</Link>
 				</div>
 				<div>
 					{ store.crearecetas && store.crearecetas.length > 0 && store.crearecetas.map(creareceta => (<div key={creareceta.id} className="card">

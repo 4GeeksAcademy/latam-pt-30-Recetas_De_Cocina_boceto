@@ -5,6 +5,8 @@ import { BackendURL } from "./component/backendURL";
 import { Signup } from "./pages/Signup";
 import { Login } from "./pages/Login";
 import { Private } from "./pages/Private";
+import { AppGeneradorRecetas } from "./pages/GeneradorRecetas";
+
 
 
 
@@ -62,6 +64,7 @@ const Layout = () => {
                         <Route element={<Addnewrecet />} path="/addnewrecet" />
                         <Route element={<Addreceta />} path="/addreceta" />
                         <Route element={<Editreceta />} path="/editreceta" />
+                        <Route element={<AppGeneradorRecetas />} path="/generadorrecetas" />
                         
                         
                         <Route element={<Form />} path="/form" />
