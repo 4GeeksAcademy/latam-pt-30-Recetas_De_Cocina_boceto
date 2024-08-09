@@ -27,7 +27,7 @@ export const AppGeneradorRecetas = () => {
 
   const translateIngredients = async (ingredients) => {
     const translatedIngredients = await Promise.all(ingredients.map(async (ingredient) => {
-      const response = await fetch(`https://translation.googleapis.com/language/translate/v2?key=YOUR_GOOGLE_API_KEY`, {
+      const response = await fetch(`https://translation.googleapis.com/language/translate/v2?key=8222d1b01baf495583f1fc075cbbbc25`, {
         method: 'POST',
         body: JSON.stringify({
           q: ingredient.original,
