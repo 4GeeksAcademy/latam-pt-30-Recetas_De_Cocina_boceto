@@ -23,7 +23,7 @@ export const Home = () => {
     fetch('https://shiny-space-lamp-976qrgg67r662774g-3001.app.github.dev/api/categorias')
       .then(response => response.json())
       .then(data => {
-        console.log('Data:', data);  // Verifica la estructura de los datos
+        console.log('Data:', data);
         setCategorias(data);
       })
   }, []);
