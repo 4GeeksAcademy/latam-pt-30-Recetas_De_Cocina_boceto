@@ -19,6 +19,7 @@ class User(db.Model):
             # do not serialize the password, its a security breach
         }
 
+
         
         
 class Categoria(db.Model):

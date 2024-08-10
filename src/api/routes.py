@@ -58,6 +58,19 @@ def login():
 
     return jsonify({"token": token}), 201
 
+
+
+@api.route('/search', methods=['GET'])
+
+def search():
+    query = request.args.get('query')
+    cursor = connection.cursor()
+    cursor.execute("SELECT * FROM tu_tabla WHERE columna LIKE %s", ('%' + query + '%',))
+    results = cursor.fetchall()
+    cursor.close()
+    connection.close()
+    return jsonify(results)
+
 @api.route('/recetas', methods=['POST'])
 def create_receta():
     data = request.json

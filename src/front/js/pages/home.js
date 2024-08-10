@@ -68,12 +68,12 @@ export const Home = () => {
             </div>
           </div>
           <div className="card card border-success mb-3">
-            <div className="card-header border-success text-success"><h4 className="card-title"><strong>Crea tu receta</strong></h4></div>
+            <div className="card-header border-success text-success"><h4 className="card-title"><strong>Generador de receta</strong></h4></div>
             <img src={formulario} className="mx-auto" alt="Card image cap" style={{ maxWidth: "10rem", maxHeight: "10rem" }} />
             <div className="card-body text-success ">
               <p></p>
-              <p className="card-text"><strong>Aqui podras crear y aportar tus propias recetas culinarias, ya sean desayunos, comidas o cenas, con los ingrdientes que mas te gusten.</strong>.</p>
-              <Link to="/addnewrecet">
+              <p className="card-text"><strong>Aqui podras generar recetas con los ingredientes que tengas a la mano.</strong>.</p>
+              <Link to="/generadorrecetas">
                 <button className="btn btn-outline-success my-2 my-sm-0" type="submit"><i className="fa-solid fa-pen-to-square"></i></button>
               </Link>
             </div>
